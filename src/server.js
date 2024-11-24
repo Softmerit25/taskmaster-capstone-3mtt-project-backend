@@ -25,11 +25,13 @@ const PORT = process.env.PORT || 5200
 //     },
 //     credentials: true, 
 //   };
-  
-app.use(cors({ 
-  origin: 'https://taskmaster-capstone-mj.netlify.app/',
+
+const corsOptions = {
+  origin: 'https://taskmaster-capstone-mj.netlify.app', 
   credentials: true,
- }));
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
