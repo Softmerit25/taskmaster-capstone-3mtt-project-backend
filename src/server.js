@@ -27,7 +27,7 @@ const PORT = process.env.PORT || 5200
 //   };
   
 app.use(cors({ 
-  origin: 'https://3mtttrainingcapstonetaskmasterprojectapi-upvwqo70.b4a.run',
+  origin: 'https://taskmaster-capstone-mj.netlify.app/',
   credentials: true,
  }));
 
