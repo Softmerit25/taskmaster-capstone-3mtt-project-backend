@@ -129,6 +129,7 @@ export const userLogin = async (req, res) => {
             signed: true,
             httpOnly: true,
             secure: true,
+            sameSite: 'none',
             maxAge: 24 * 60 * 60 * 1000
         }).status(200).json({ 
             status: 'success', 
@@ -166,6 +167,7 @@ export const userLogOut = async (req, res) => {
         httpOnly: true,
         signed: true,
         secure: true,
+        sameSite: 'none',
         }).status(200).json({ status: 'success', message: 'LogOut Successful!', })
 
    } catch (error) {
