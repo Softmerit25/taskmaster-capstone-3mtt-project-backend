@@ -34,6 +34,7 @@ export const protectRoutes = async (req, res, next)=>{
        
         // Handle specific JWT errors
         let message = 'Error in token Authentication failed';
+        
         if (error.name === 'TokenExpiredError') {
             message = 'Token has expired';
         } else if (error.name === 'JsonWebTokenError') {
