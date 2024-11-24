@@ -128,10 +128,9 @@ export const userLogin = async (req, res) => {
         return res.cookie(process.env.COOKIE_NAME, token, {
             signed: true,
             httpOnly: true,
-            // secure: true,
+            secure: true,
+            sameSite:  'strict',
             // sameSite: 'none',
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'strict',
             maxAge: 24 * 60 * 60 * 1000
         }).status(200).json({ 
             status: 'success', 
@@ -167,10 +166,9 @@ export const userLogOut = async (req, res) => {
        // clear previous user token before setting a new one
        return res.clearCookie(process.env.COOKIE_NAME, {
         httpOnly: true,
-        // secure: true,
+        secure: true,
+        sameSite:  'strict',
         // sameSite: 'none',
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'strict',
         }).status(200).json({ status: 'success', message: 'LogOut Successful!', })
 
    } catch (error) {
