@@ -11,35 +11,28 @@ import { db } from './config/db.js';
 const app = express()
 
 
-const PORT = process.env.PORT || 5500
+const PORT = process.env.PORT || 5200
 
 
 // CORS ORIGIN MIDDLEWARE
-const corsOptions = {
-    origin: (origin, callback) => {
-      if (!origin) {
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//       if (!origin) {
       
-        return callback(null, true);
-      }
-      callback(null, true);
-    },
-    credentials: true, 
-  };
+//         return callback(null, true);
+//       }
+//       callback(null, true);
+//     },
+//     credentials: true, 
+//   };
   
-app.use(cors(corsOptions));
+app.use(cors({ 
+  origin: 'https://3mtttrainingcapstonetaskmasterprojectapi-upvwqo70.b4a.run',
+  credentials: true,
+ }));
 
 app.use(cookieParser(process.env.COOKIE_SECRET));
-// app.use(session({
-//     secret: process.env.COOKIE_SECRET,
-//     resave: false, 
-//     saveUninitialized: true, 
-//     cookie: {
-//       maxAge: 24 * 60 * 60 * 1000,
-//       httpOnly: true, 
-//       secure: process.env.NODE_ENV === 'production', 
-//       sameSite: 'strict', 
-//     },
-//   }));
+
 app.use(express.json());
 
 // PROTECT ROUTE REQUEST VIA HTTP

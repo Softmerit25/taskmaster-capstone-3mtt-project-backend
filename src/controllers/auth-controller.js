@@ -129,13 +129,11 @@ export const userLogin = async (req, res) => {
             signed: true,
             httpOnly: true,
             secure: true,
-            sameSite:  'strict',
-            // sameSite: 'none',
             maxAge: 24 * 60 * 60 * 1000
         }).status(200).json({ 
             status: 'success', 
             message: 'Login successful', 
-            data:{ payload, xt:token }})
+            data: payload })
     
     } catch (error) {
         console.log('Error in login user controller:', error);
@@ -166,9 +164,8 @@ export const userLogOut = async (req, res) => {
        // clear previous user token before setting a new one
        return res.clearCookie(process.env.COOKIE_NAME, {
         httpOnly: true,
+        signed: true,
         secure: true,
-        sameSite:  'strict',
-        // sameSite: 'none',
         }).status(200).json({ status: 'success', message: 'LogOut Successful!', })
 
    } catch (error) {
